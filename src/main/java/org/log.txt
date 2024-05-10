@@ -1,0 +1,26 @@
+May 10, 2024 5:23:24 PM org.MainSystemGUI writeLogsToFile
+INFO: User 'Jonesy' logged in successfully
+May 10, 2024 5:23:38 PM org.MainSystemGUI writeLogsToFile
+INFO: User 'Jonesy' has searched: '3'
+May 10, 2024 5:23:48 PM org.MainSystemGUI writeLogsToFile
+INFO: User 'Jonesy' has searched: 'Google'
+May 10, 2024 5:24:07 PM org.MainSystemGUI writeLogsToFile
+INFO: User 'Jonesy' has searched: 'Administration'
+May 10, 2024 5:56:02 PM org.MainSystemGUI writeLogsToFile
+INFO: User 'Jonesy' has logged out!
+May 10, 2024 6:23:27 PM org.MainSystemGUI writeLogsToFile
+INFO: User 'Jonesy' logged in successfully
+May 10, 2024 6:23:42 PM org.MainSystemGUI writeLogsToFile
+INFO: User 'Jonesy' has searched: 'Administration'
+May 10, 2024 6:29:30 PM org.MainSystemGUI writeLogsToFile
+INFO: User 'Jonesy' logged in successfully
+May 10, 2024 6:29:36 PM org.MainSystemGUI writeLogsToFile
+INFO: User 'Jonesy' has searched: 'Administration'
+May 10, 2024 6:29:44 PM org.MainSystemGUI writeLogsToFile
+INFO: User 'Jonesy' has logged out!
+May 10, 2024 6:29:56 PM org.MainSystemGUI writeLogsToFile
+INFO: User 'Jonesy' logged in successfully
+May 10, 2024 6:30:03 PM org.MainSystemGUI writeLogsToFile
+INFO: User 'Jonesy' has searched: 'Administration'
+May 10, 2024 7:06:52 PM org.MainSystemGUI writeLogsToFile
+INFO: User 'Jonesy' has logged out!
