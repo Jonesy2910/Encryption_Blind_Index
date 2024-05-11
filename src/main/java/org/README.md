@@ -1,5 +1,6 @@
-# Encryption-with-Blind-Index
-Create a two tables in MySQL and call them users and information
+#### Encryption-with-Blind-Index 🔒
+### Setup 📚
+## 1. Create a two tables in MySQL and call them users and information
 ```
 CREATE TABLE `information` (
   `ID` int NOT NULL AUTO_INCREMENT,
@@ -31,79 +32,28 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 ```
 
-Add a record to the users table that is shorter than 30 characters for username and password
+## 2. Add a record to the users table that is shorter than 30 characters for username and password
 
-Use the excel spreadsheet that has the information for the database to be imported directly into the file using table wizard in MySQL.
+## 3. Use the excel spreadsheet that has the information for the database to be imported directly into the file using table wizard in MySQL.
 
-Instructions to setup encryption system:
+## 4. Change the key locations and log location with a suitable file locations for the textfile to be saved to your device. Requires values changed in systemSetup and SystemManagement classes
 
-1. In the RunSystem class file. 
-
-Uncomment and select the correct .txt file that you would like to save the key to.
-```
-SecretKey key = SystemManagement.generateKey();
-String filePath = "C:\\Users\\Dan_J\\OneDrive\\Desktop\\SecureKeyLocation\\key.txt";
-SystemManagement.writeKeyToFile(key, filePath); 
-```
-and press click run
-
-2. Comment 
+For Example:
 
 ```
-SecretKey key = SystemManagement.generateKey(); // generates key
-String filePath = "C:\\Users\\Dan_J\\OneDrive\\Desktop\\SecureKeyLocation\\key.txt";
-SystemManagement.writeKeyToFile(key, filePath); // writing key to file
-```
+Path path = Paths.get("D:\\Desktop\\Key_Location\\AES_key.txt");
 
-3. Uncomment and select the correct .txt file that you would like to save the key to.
-```
-SecretKey HMACkey = SystemManagement.generateHMACKey();
-String filePathHMAC = "C:\\Users\\Dan_J\\OneDrive\\Desktop\\SecureKeyLocation\\HMACkey.txt";
-SystemManagement.writeKeyToFile(HMACkey, filePathHMAC);
-```
-and click run
-
-4. Comment
-```
-SecretKey HMACkey = SystemManagement.generateHMACKey();
-String filePathHMAC = "C:\\Users\\Dan_J\\OneDrive\\Desktop\\SecureKeyLocation\\HMACkey.txt";
-SystemManagement.writeKeyToFile(HMACkey, filePathHMAC);
-```
-
-5. In the RunSystem class file. 
-
-Uncomment
-```
-HashAllIndexes hashAllIndexes = new HashAllIndexes();
-hashAllIndexes.hashAllIndexes();
-```
-and press click run
-
-6. Comment 
+String hmacKeyFilePath = "D:\\Projects\\Blind_Index\\src\\main\\java\\org\\key_location\\HMAC_key.txt";
 
 ```
-HashAllIndexes hashAllIndexes = new HashAllIndexes();
-hashAllIndexes.hashAllIndexes();
-```
 
-7. Uncomment
-```
-EncryptAllFields EncryptAllFields = new EncryptAllFields();
-EncryptAllFields.encryptAllFields();
-```
-and click run
+## 5. In the RunSystem class file. 
 
-8. Comment
-```
-EncryptAllFields EncryptAllFields = new EncryptAllFields();
-EncryptAllFields.encryptAllFields();
-```
+This should full create the system so that the program can be used and launch the LoginGUI.
 
-9. Uncomment 
-```
-LoginGUI loginGUI = new LoginGUI();
-loginGUI.createLoginGUI();
-```
-and click run
+### Future Work 🔮
 
-This should full create the system so that the program can be used.
+## 1. Make the GUI more appealing to the user.
+## 2. Make the user be able to register to the company with some form of validation if the user works for the company
+## 3. Work on way to stop SQL Injection 
+## 4. Check for other vulnerabilities
