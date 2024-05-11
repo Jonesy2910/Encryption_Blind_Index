@@ -59,3 +59,4 @@ This should full create the system so that the program can be used and launch th
 #### 2. Make the user be able to register to the company with some form of validation if the user works for the company
 #### 3. Work on way to stop SQL Injection 
 #### 4. Check for other vulnerabilities
+#### 5. Comment code for better documentation
