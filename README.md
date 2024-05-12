@@ -11,7 +11,7 @@
 
 ## Setup 📚
 
-1. Create a two tables in MySQL and call them users and information
+#### 1. Create a two tables in MySQL and call them users and information
 ```
  CREATE TABLE `information` (
    `ID` int NOT NULL AUTO_INCREMENT,
