@@ -53,9 +53,7 @@
 
 ```
 Path path = Paths.get("D:\\Desktop\\Key_Location\\AES_key.txt");
-
 String hmacKeyFilePath = "D:\\Projects\\Blind_Index\\src\\main\\java\\org\\key_location\\HMAC_key.txt";
-
 ```
 
 #### 5. In the RunSystem class file. 
