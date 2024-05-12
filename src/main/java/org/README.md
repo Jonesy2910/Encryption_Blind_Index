@@ -60,3 +60,4 @@ This should full create the system so that the program can be used and launch th
 #### 3. Work on way to stop SQL Injection 
 #### 4. Check for other vulnerabilities
 #### 5. Comment code for better documentation
+#### 6. Look into how to store the encryption keys on AWS so they are more secure
