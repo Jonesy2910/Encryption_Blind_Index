@@ -98,9 +98,9 @@ String hmacKeyFilePath = "D:\\Projects\\Blind_Index\\src\\main\\java\\org\\key_l
 
 ## Future Work 🔮
 
-_* #### Make the GUI more appealing to the user.
-_* #### Make the user be able to register to the company with some form of validation if the user works for the company
-_* #### Work on way to stop SQL Injection 
-_* #### Check for other vulnerabilities
-_* #### Comment code for better documentation
-_* #### Look into how to store the encryption keys on AWS so they are more secure
+1. #### Make the GUI more appealing to the user.
+2. #### Make the user be able to register to the company with some form of validation if the user works for the company
+3. #### Work on way to stop SQL Injection 
+4. #### Check for other vulnerabilities
+5. #### Comment code for better documentation
+6. #### Look into how to store the encryption keys on AWS so they are more secure
