@@ -62,13 +62,13 @@ String hmacKeyFilePath = "D:\\Projects\\Blind_Index\\src\\main\\java\\org\\key_l
 
 ## What was used? ✍️
 
-#### *  ``Java``
-#### *  ``BouncyCastle Cryptographic Library``
-#### *  ``MySQL``
-#### *  ``JPanel``
-#### *  ``AES``
-#### *  ``HMACSHA256``
-#### *  ``Audit Logging``
+* #### ``Java``
+* #### ``BouncyCastle Cryptographic Library``
+* #### ``MySQL``
+* #### ``JPanel``
+* #### ``AES``
+* #### ``HMACSHA256``
+* #### ``Audit Logging``
 
 ## What I Learned 🧑‍🎓
 
