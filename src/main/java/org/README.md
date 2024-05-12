@@ -2,12 +2,12 @@
 
 ## Features 💯
 
-#### Adding encrypted information to a database
-#### Removing encrypted information in a database
-#### Searching for encrypted information in a database
-#### Editing encrypted information in a database
-#### Login Functionality
-#### Audit Logging Users
+* #### Adding encrypted information to a database
+* #### Removing encrypted information in a database
+* #### Searching for encrypted information in a database
+* #### Editing encrypted information in a database
+* #### Login Functionality
+* #### Audit Logging Users
 
 ## Setup 📚
 
