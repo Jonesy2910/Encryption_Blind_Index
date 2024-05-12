@@ -1,15 +1,14 @@
 # Encryption-with-Blind-Index 🔒
 
-## What was used? ✍️
+## Features 💯
 
-*  ``Java``
-*  ``BouncyCastle Cryptographic Library``
-*  ``MySQL``
-*  ``JPanel``
-*  ``AES``
-*  ``HMACSHA256``
-*  ``Audit Logging``
-  
+### Adding encrypted information to a database
+### Removing encrypted information in a database
+### Searching for encrypted information in a database
+### Editing encrypted information in a database
+### Login Functionality
+### Audit Logging Users
+
 ## Setup 📚
 
 #### 1. Create a two tables in MySQL and call them users and information
@@ -63,6 +62,15 @@ String hmacKeyFilePath = "D:\\Projects\\Blind_Index\\src\\main\\java\\org\\key_l
 
 This should full create the system so that the program can be used and launch the LoginGUI.
 
+## What was used? ✍️
+
+*  ``Java``
+*  ``BouncyCastle Cryptographic Library``
+*  ``MySQL``
+*  ``JPanel``
+*  ``AES``
+*  ``HMACSHA256``
+*  ``Audit Logging``
 
 ## What I Learned 🧑‍🎓
 
@@ -78,13 +86,17 @@ This should full create the system so that the program can be used and launch th
 
 ## The Process 👩🏽‍🍳  
 
-The aim of the project was to 'successfully create a fully functional system that will encrypt and decrypt information sent to a SQL database and provide a way of searching encrypted information. Blind indexes can ensure that sensitive data can be securely stored and retrieved without damaging the confidentiality of the information stored in the database.`
+The project's aim was to 'successfully create a fully functional system that will encrypt and decrypt information sent to a SQL database and provide a way of searching encrypted information. Blind indexes can ensure that sensitive data can be securely stored and retrieved without damaging the confidentiality of the information stored in the database.`
 
-To make sure the project was successful I started by creating a literature review that would allow me to understand which technologies I required to use for the project.
+Ensuring the project's success began with a comprehensive literature review. This strategic step was instrumental in guiding the project's direction, helping me identify the necessary technologies for its implementation.
 
-After conducting the literature review it made me understand what I required for the project as well as be aware of the vulnerabilities that the project could face when developing the encryption system. Therefore, I created the design of the project. The design of the project covered created UML class diagrams, sequence diagrams, wireframes, system requirements and user requirements. This gave me the fundamental start so that I could successfully start developing the project to get a real understanding on what was required of the project. 
+The literature review not only informed the project's technology requirements but also highlighted potential vulnerabilities. This insight prompted the design phase, which included UML class diagrams, sequence diagrams, wireframes, system requirements, and user requirements. This proactive approach was crucial in addressing potential issues and ensuring a successful development process. 
 
-For the development of the project, I started off testing how BouncyCastle library functioned by using the console to output the encrypted information in the database. It was difficult to understand if the information was encrypted in the first place because the output was showing information that wasn't understandable. It was only until I used the same key to decrypt the message to make sure the way I was doing it was correct. Once I had this down I also tried whether the hashing algorithm worked. Originally I used BCrypt but realised when I was developing the project that it was able to be used in the project. I required a key to hash the algorithms so that an index was created and BCrypt created a random value eachtime. BCrypt is good for passwords but not for creating indexes. After realising my mistake I looked at other encryption algorithms such as SHA-256, MD5 and HMACSHA256. I decided to go with HMACSHA256 because the BouncyCastle Library supported the use of this algorithm and was easy to implement. After I got this working it was time to start developing the GUI and the databases so I could also add the storage and encryption process to the project. I decided to use MySQL because I had used it in other assignments throughout my time at University. 
+For the project's development, I started testing how the BouncyCastle library functioned by using the console to output the encrypted information in the database. It wasn't easy to understand if the information was encrypted in the first place because the output was showing information that wasn't understandable. It was only until I used the same key to decrypt the message to make sure the way I was doing it was correct. Once I had this down, I also tried to determine whether the hashing algorithm worked. Initially, I used BCrypt, but I realised when I was developing the project that it could be used in the project. I required a key to hash the algorithms to create an index, and BCrypt created a random value each time. BCrypt is suitable for passwords but not for creating indexes. After realising my mistake, I looked at other hashing algorithms such as SHA-256, MD5 and HMACSHA256. I decided to go with HMACSHA256 because the BouncyCastle Library supported using this algorithm and was easy to implement. After I got this working, it was time to start developing the GUI and the databases so I could add the storage and encryption process to the project. I decided to use MySQL because I had used it in other assignments throughout my time at University. When designing the GUI, I was not happy with the design and plan on changing the design when I get a better chance. This was my second time using JPanel, and I found it quite tricky; using a different GUI framework, such as JavaFX, I believe would be more beneficial.  
+
+After I successfully created the project, I made sure to evaluate my results and consider future work I could do for it, which I have added below. 
+
+Overall, this was my favourite project, as I am very interested in software development and cybersecurity. By developing my understanding of these two technology sectors, I was happy with how my University career took me. Looking back at the user and system requirements, everything was met, so I deemed this a very successful project; however, more work could be done. 
 
 ## Future Work 🔮
 
