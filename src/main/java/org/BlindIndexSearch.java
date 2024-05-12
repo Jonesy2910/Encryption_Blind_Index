@@ -20,12 +20,15 @@ import java.util.ArrayList;
 
 public class BlindIndexSearch {
 
+    //Getting new instance of hashing all indexes
     HashAllIndexes getHMAC = new HashAllIndexes();
     public List<decryptedDTO> searchBlindIndex(String searchText, String searchColumn) {
+        // Creating new instance of an arrayList using the decryptedDTO
         List<decryptedDTO> results = new ArrayList<>();
         try (Connection conn = DBConnection.getConnection()) {
             //Adding bouncy castle
             Security.addProvider(new BouncyCastleProvider());
+            //Retrieving key
             SecretKey key = SystemManagement.readKeyFromFile();
 
             // Use blind index to find matching rows
@@ -55,16 +58,17 @@ public class BlindIndexSearch {
                 byte[] encryptedDescription = resultSet.getBytes("description");
                 byte[] encryptedSupplierPostcode = resultSet.getBytes("supplier_postcode");
                 byte[] encryptedExpenditureType = resultSet.getBytes("expenditure_type");
-//                String hashedExpenditureIndex = resultSet.getString("expenditure_type_index");
                 byte[] iv = resultSet.getBytes("iv");
 
-//                String encryptedExpenditureTypeHex = bytesToHex(encryptedExpenditureType);
-//                System.out.println(encryptedExpenditureTypeHex);
+                // Testing
+                // String hashedExpenditureIndex = resultSet.getString("expenditure_type_index");
+                // String encryptedExpenditureTypeHex = bytesToHex(encryptedExpenditureType);
+                // System.out.println(encryptedExpenditureTypeHex);
 
                 //Getting cipher
                 Cipher cipher = getCipher(key, iv);
 
-                //Decryption
+                //Decrypting each field using the block cipher then trimming the padding
                 String date = decryptField(cipher, encryptedDate).trim();
                 String expenseArea = decryptField(cipher, encryptedExpenseArea).trim();
                 String expenseType = decryptField(cipher, encryptedExpenseType).trim();
@@ -76,7 +80,7 @@ public class BlindIndexSearch {
                 String expenditureType = decryptField(cipher, encryptedExpenditureType).trim();
 
 
-//                System.out.println(expenditureType);
+                // System.out.println(expenditureType);
 
                 //Data transfer
                 decryptedDTO row = new decryptedDTO(id, date,
@@ -87,9 +91,10 @@ public class BlindIndexSearch {
 
                 //Adding row
                 results.add(row);
-//                Testing to see value of hashed index
-//                System.out.println("This is the index value found for expenditure: " + hashedExpenditureIndex);
+                // Testing to see value of hashed index
+                // System.out.println("This is the index value found for expenditure: " + hashedExpenditureIndex);
             }
+            //Error Handling
 
         } catch (SQLException e) {
             System.err.println("Problem while interacting with database: " + e.getMessage());
@@ -114,7 +119,9 @@ public class BlindIndexSearch {
     }
 
     public static Cipher getCipher(SecretKey key, byte[] iv) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, InvalidKeyException, NoSuchProviderException {
+        // Setting cipher to use AES, CBC and PKSC5
         Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding", "BC");
+        // Initalising the cipher
         cipher.init(Cipher.DECRYPT_MODE, key, new IvParameterSpec(iv));
         return cipher;
     }

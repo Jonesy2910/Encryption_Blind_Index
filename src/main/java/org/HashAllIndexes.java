@@ -72,6 +72,7 @@ public class HashAllIndexes {
                 stmt.setInt(9, id);
                 stmt.executeUpdate();
             }
+        // Error Handling
         } catch (IOException e){
             System.err.println("Problem while performing Input and Output Operation: "  + e.getMessage());
         } catch(InvalidKeyException e){
@@ -85,9 +86,13 @@ public class HashAllIndexes {
 
     //
     public String getHmacValue(String input) throws IOException, NoSuchAlgorithmException, InvalidKeyException {
+        // Reading HMAC key
         SecretKey HMACkey = SystemManagement.readHMACKeyFromFile();
+        // Getting instance of HMACSHA256
         Mac hmac = Mac.getInstance("HMACSHA256");
+        //Initalising the key
         hmac.init(HMACkey);
+        // Returning a new string that has converted in the HMAC value into hexadecimal
         return new String(Hex.encode(hmac.doFinal(input.getBytes())));
     }
 }

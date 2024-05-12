@@ -19,8 +19,11 @@ public class EncryptAllFields {
 
     public static void encryptAllFields() throws IOException {
         try (Connection connection = DBConnection.getConnection()) {
+            // Adding BouncyCastle functions
             Security.addProvider(new BouncyCastleProvider());
+            // Reading key
             SecretKey key = SystemManagement.readKeyFromFile();
+            // Getting cipher
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding", "BC");
 
             // Select all rows from the class table
@@ -28,6 +31,7 @@ public class EncryptAllFields {
             PreparedStatement selectStatement = connection.prepareStatement(selectQuery);
             ResultSet resultSet = selectStatement.executeQuery();
 
+            //Attempting to retrieve every row and encrypting
             try {
 
                 //Getting all rows from database
@@ -61,13 +65,15 @@ public class EncryptAllFields {
                     byte[] encryptedSupplierPostcode = encrypt.encryptField(cipher, supplierPostcode);
                     byte[] encryptedExpenditureType = encrypt.encryptField(cipher, expenditureType);
 
-                    // Updating the database
+                    // Updating the database with the new encrypted information
                     String updateQuery = "UPDATE information SET " +
                             "date = ?, expense_area = ?, " +
                             "expense_type = ?, " + "supplier = ?, " +
                             "transaction_number = ?," + "amount = ?, " +
                             "description = ?," + "supplier_postcode = ?, " +
                             "expenditure_type = ?, iv = ? " + "WHERE id = ?";
+
+                    // Setting database with each new encrypted row
 
                     PreparedStatement stmt = connection.prepareStatement(updateQuery);
                     stmt.setBytes(1, encryptedDate);
@@ -84,6 +90,7 @@ public class EncryptAllFields {
 
                     stmt.executeUpdate();
                 }
+            // Error handling
             } catch (SQLException e) {
                 System.err.println("Problem while interacting with database: " + e.getMessage());
             } catch (IOException e) {
@@ -110,19 +117,30 @@ public class EncryptAllFields {
         }
     }
 
+
+    //Creating IV to be used
     public static byte[] createIV() throws NoSuchAlgorithmException {
+        // Getting secure random number
         SecureRandom random = new SecureRandom();
+        // Creating new byte with length of 16
         byte[] iv = new byte[16];
+        // Setting new random iv
         random.nextBytes(iv);
+        // Returning iv
         return iv;
     }
 
     //Encrypting the fields
     public byte[] encryptField(Cipher cipher, String plaintext) throws InvalidKeyException, IOException, IllegalBlockSizeException, BadPaddingException {
+        // Getting bytes of the plaintext
         byte[] plaintextBytes = plaintext.getBytes();
+        // Creating block size of cipher
         int blockSize = cipher.getBlockSize();
+        // Getting length of plaintext in bytes dividing by block size + 1 then multiplying by block size
         int paddedLength = (plaintextBytes.length / blockSize + 1) * blockSize;
+        // Ensures the length is a multiple of the block size
         byte[] paddedPlaintext = Arrays.copyOf(plaintextBytes, paddedLength);
+        // Returns a byte array
         return cipher.doFinal(paddedPlaintext);
     }
 }

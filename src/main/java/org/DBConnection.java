@@ -8,10 +8,10 @@ public class DBConnection {
     public static Connection getConnection() {
         Connection connection = null;
         try {
-            // JDBC
+            // Using the class in dependancy of mysql
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            // Creating connection to mysql
+            // Creating connection to mysql by using url, username and password
             System.out.println("Connecting to the database");
             String url = "jdbc:mysql://localhost:3306/encryption_database";
             String username = "root";

@@ -1,3 +1,5 @@
+//Created so that the search term can retrieve all the encrypted information in the database then decrypt the information
+
 package org;
 
 public class decryptedDTO {

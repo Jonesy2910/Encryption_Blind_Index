@@ -4,21 +4,29 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 import javax.crypto.*;
 import javax.crypto.spec.IvParameterSpec;
+
 import java.io.IOException;
+
 import java.security.*;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
+//Reusing code from Encrypt All Fields for when the IV was created. An IV must be created everytime for encryption to keep it random
 import static org.EncryptAllFields.createIV;
+//Import username so it can be audit trailed
 import static org.LoginGUI.username;
 
 public class addToDatabase {
 
     public void addInformation(String date, String expenseArea, String expenseType, String supplier, String transactionNumber, String amount, String description, String supplierPostcode, String expenditureType) {
 
+        //Creating instance of hashing HashAllIndexes
         HashAllIndexes getHMAC = new HashAllIndexes();
+        //Attempting to connect to database
         try (Connection conn = DBConnection.getConnection()) {
             //Add Bouncy Castle
             Security.addProvider(new BouncyCastleProvider());
@@ -29,7 +37,7 @@ public class addToDatabase {
 
             System.out.println("Entered Supplier: " + supplier);
 
-            // Creating blind index by hashing field
+            // Creating blind index by hashing field of each column
             String dateIndex = getHMAC.getHmacValue(date);
             String expenseAreaIndex = getHMAC.getHmacValue(expenseArea);
             String expenseTypeIndex = getHMAC.getHmacValue(expenseType);
@@ -39,15 +47,17 @@ public class addToDatabase {
             String supplierPostcodeIndex = getHMAC.getHmacValue(supplierPostcode);
             String expenditureTypeIndex = getHMAC.getHmacValue(expenditureType);
 
-            System.out.println("Created Index: " + supplierIndex);
+            // Testing to see if successful
+            // System.out.println("Created Index: " + supplierIndex);
 
-            //Create new IV
+            //Create new IV requires a new IV every encryption
             byte[] iv = createIV();
-            //Initalising IV
+            //Initalising IV so it can be used
             IvParameterSpec ivSpec = new IvParameterSpec(iv);
+            //Using the cipher with the key and IV so that the information can be encrypted
             cipher.init(Cipher.ENCRYPT_MODE, key, ivSpec);
 
-            //Encrypts all fields
+            //Encrypting all fields and saving them as a byte
             EncryptAllFields encrypt = new EncryptAllFields();
             byte[] encryptedDate = encrypt.encryptField(cipher, date);
             byte[] encryptedExpenseArea = encrypt.encryptField(cipher, expenseArea);
@@ -59,9 +69,9 @@ public class addToDatabase {
             byte[] encryptedExpenditureType = encrypt.encryptField(cipher, expenditureType);
             byte[] encryptedSupplier = encrypt.encryptField(cipher,supplier);
 
-            //Testing to see encryption
-            String encryptedDateHex = bytesToHex(encryptedSupplier);
-            System.out.println("Created Encryption Converted To Hexadecimal " + encryptedDateHex);
+            // Testing to see encryption in hexadecimal form
+            // String encryptedDateHex = bytesToHex(encryptedSupplier);
+            // System.out.println("Created Encryption Converted To Hexadecimal " + encryptedDateHex);
 
             // Inserting new row into the table
             String insertQuery = "INSERT INTO information (date, expense_area, " +
@@ -75,9 +85,10 @@ public class addToDatabase {
                     "expenditure_type_index, iv) " +
                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
+            //Connecting to database with the query to insert values into database
             PreparedStatement insertStatement = conn.prepareStatement(insertQuery);
 
-            //Performing Query
+            //Performing Query to add information to the database
             insertStatement.setBytes(1, encryptedDate);
             insertStatement.setBytes(2, encryptedExpenseArea);
             insertStatement.setBytes(3, encryptedExpenseType);
@@ -96,15 +107,20 @@ public class addToDatabase {
             insertStatement.setString(16, supplierPostcodeIndex);
             insertStatement.setString(17, expenditureTypeIndex);
             insertStatement.setBytes(18, iv);
-            //Executes Query
+            //Executing Query
             insertStatement.executeUpdate();
 
-            //Logging
+            // Logging to the text file for log
+
+            // Selecting the id of the row of the database where the iv matches
             String selectQuery = "SELECT id FROM information WHERE iv = ?";
+            // Preparing the statement of the query to be performed on the database
             PreparedStatement selectStatement = conn.prepareStatement(selectQuery);
             selectStatement.setBytes(1, iv);
+            // Execution
             ResultSet resultSet = selectStatement.executeQuery();
 
+            // If executed get the id and add the username and row with the ID to the log file.
             if (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String logMessage = "User '" + username + "' has added ID: '" + id + "'";
@@ -113,6 +129,7 @@ public class addToDatabase {
                 System.out.println("Error retrieving ID");
             }
 
+            //Error Handling
         } catch (SQLException e) {
             System.err.println("Problem while interacting with database: " + e.getMessage());
         } catch (IOException e) {

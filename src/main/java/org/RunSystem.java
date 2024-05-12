@@ -17,8 +17,11 @@ public class RunSystem {
             LoginGUI loginGUI = new LoginGUI();
             loginGUI.createLoginGUI();
 
-//        MainSystemGUI MainSystemGUI = new MainSystemGUI();
-//        MainSystemGUI.createMainGUI();
+            // Used to bypass login
+            // MainSystemGUI MainSystemGUI = new MainSystemGUI();
+            // MainSystemGUI.createMainGUI();
+
+        // Error Handling
         } catch(NoSuchAlgorithmException e) {
             System.err.println("Invalid or inappropriate decryption algorithm: " + e.getMessage());
         } catch(IOException e) {
