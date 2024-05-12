@@ -103,3 +103,5 @@ Overall, this was my favourite project, as I am very interested in software deve
 4. Check for other vulnerabilities
 5. Comment code for better documentation
 6. Look into how to store the encryption keys on AWS so they are more secure
+7. Work out how to remove multiple fields at once
+8. Work on how to edit multiple fields at once
