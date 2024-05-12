@@ -51,7 +51,7 @@
 
 #### For Example:
 
-#### ```
+```
 Path path = Paths.get("D:\\Desktop\\Key_Location\\AES_key.txt");
 
 String hmacKeyFilePath = "D:\\Projects\\Blind_Index\\src\\main\\java\\org\\key_location\\HMAC_key.txt";
@@ -60,7 +60,7 @@ String hmacKeyFilePath = "D:\\Projects\\Blind_Index\\src\\main\\java\\org\\key_l
 
 #### 5. In the RunSystem class file. 
 
-This should full create the system so that the program can be used and launch the LoginGUI.
+##### This should full create the system so that the program can be used and launch the LoginGUI.
 
 ## What was used? ✍️
 
