@@ -11,37 +11,37 @@
 
 ## Setup 📚
 
-#### 1. Create a two tables in MySQL and call them users and information
-#### ```
-#### CREATE TABLE `information` (
-####   `ID` int NOT NULL AUTO_INCREMENT,
-####   `date` varbinary(255) NOT NULL,
-####   `date_index` varchar(255) NOT NULL,
-####   `expense_type` varbinary(255) NOT NULL,
-####   `expense_type_index` varchar(255) NOT NULL,
-####   `expense_area` varbinary(255) NOT NULL,
-####   `expense_area_index` varchar(255) NOT NULL,
-####   `supplier` varbinary(255) NOT NULL,
-####   `supplier_index` varchar(255) NOT NULL,
-####   `transaction_number` varbinary(255) NOT NULL,
-####   `transaction_number_index` varchar(255) NOT NULL,
-####   `amount` varbinary(255) NOT NULL,
-####   `amount_index` varchar(255) NOT NULL,
-####   `description` varbinary(255) NOT NULL,
-####   `supplier_postcode` varbinary(255) NOT NULL,
-####   `supplier_postcode_index` varchar(255) NOT NULL,
-####   `expenditure_type` varbinary(255) NOT NULL,
-####   `expenditure_type_index` varchar(255) NOT NULL,
-####   `iv` varbinary(255) NOT NULL,
-####   PRIMARY KEY (`ID`)
-#### ) ENGINE=InnoDB AUTO_INCREMENT=116 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-#### ```
-#### ```
-#### CREATE TABLE `users` (
-####   `username` varchar(30) NOT NULL,
-####   `password` varchar(30) NOT NULL
-#### ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-#### ```
+1. Create a two tables in MySQL and call them users and information
+```
+ CREATE TABLE `information` (
+   `ID` int NOT NULL AUTO_INCREMENT,
+   `date` varbinary(255) NOT NULL,
+   `date_index` varchar(255) NOT NULL,
+   `expense_type` varbinary(255) NOT NULL,
+   `expense_type_index` varchar(255) NOT NULL,
+   `expense_area` varbinary(255) NOT NULL,
+   `expense_area_index` varchar(255) NOT NULL,
+   `supplier` varbinary(255) NOT NULL,
+   `supplier_index` varchar(255) NOT NULL,
+   `transaction_number` varbinary(255) NOT NULL,
+   `transaction_number_index` varchar(255) NOT NULL,
+   `amount` varbinary(255) NOT NULL,
+   `amount_index` varchar(255) NOT NULL,
+   `description` varbinary(255) NOT NULL,
+   `supplier_postcode` varbinary(255) NOT NULL,
+   `supplier_postcode_index` varchar(255) NOT NULL,
+   `expenditure_type` varbinary(255) NOT NULL,
+   `expenditure_type_index` varchar(255) NOT NULL,
+   `iv` varbinary(255) NOT NULL,
+   PRIMARY KEY (`ID`)
+ ) ENGINE=InnoDB AUTO_INCREMENT=116 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+ ```
+ ```
+ CREATE TABLE `users` (
+   `username` varchar(30) NOT NULL,
+   `password` varchar(30) NOT NULL
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+ ```
 
 #### 2. Add a record to the users table that is shorter than 30 characters for username and password
 
