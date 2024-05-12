@@ -8,7 +8,8 @@
 *  ``JPanel``
 *  ``AES``
 *  ``HMACSHA256``
-
+*  ``Audit Logging``
+  
 ## Setup 📚
 
 #### 1. Create a two tables in MySQL and call them users and information
@@ -62,6 +63,29 @@ String hmacKeyFilePath = "D:\\Projects\\Blind_Index\\src\\main\\java\\org\\key_l
 
 This should full create the system so that the program can be used and launch the LoginGUI.
 
+
+## What I Learned 🧑‍🎓
+
+* ``Hashing``
+* ``AES``
+* ``Database Management``
+* ``Audit Trails``
+* ``Java``
+* ``Block Ciphers``
+* ``PKCS5Padding``
+* ``Cyber Security``
+* ``SQL``
+
+## The Process 👩🏽‍🍳  
+
+The aim of the project was to 'successfully create a fully functional system that will encrypt and decrypt information sent to a SQL database and provide a way of searching encrypted information. Blind indexes can ensure that sensitive data can be securely stored and retrieved without damaging the confidentiality of the information stored in the database.`
+
+To make sure the project was successful I started by creating a literature review that would allow me to understand which technologies I required to use for the project.
+
+After conducting the literature review it made me understand what I required for the project as well as be aware of the vulnerabilities that the project could face when developing the encryption system. Therefore, I created the design of the project. The design of the project covered created UML class diagrams, sequence diagrams, wireframes, system requirements and user requirements. This gave me the fundamental start so that I could successfully start developing the project to get a real understanding on what was required of the project. 
+
+For the development of the project, I started off testing how BouncyCastle library functioned by using the console to output the encrypted information in the database. It was difficult to understand if the information was encrypted in the first place because the output was showing information that wasn't understandable. It was only until I used the same key to decrypt the message to make sure the way I was doing it was correct. Once I had this down I also tried whether the hashing algorithm worked. Originally I used BCrypt but realised when I was developing the project that it was able to be used in the project. I required a key to hash the algorithms so that an index was created and BCrypt created a random value eachtime. BCrypt is good for passwords but not for creating indexes. After realising my mistake I looked at other encryption algorithms such as SHA-256, MD5 and HMACSHA256. I decided to go with HMACSHA256 because the BouncyCastle Library supported the use of this algorithm and was easy to implement. After I got this working it was time to start developing the GUI and the databases so I could also add the storage and encryption process to the project. I decided to use MySQL because I had used it in other assignments throughout my time at University. 
+
 ## Future Work 🔮
 
 #### 1. Make the GUI more appealing to the user.
@@ -70,21 +94,3 @@ This should full create the system so that the program can be used and launch th
 #### 4. Check for other vulnerabilities
 #### 5. Comment code for better documentation
 #### 6. Look into how to store the encryption keys on AWS so they are more secure
-
-## What I Learned 🧑‍🎓
-
-
-## The Process 👩🏽‍🍳  
-I started by rendering a canvas with rough.js to create the base for all the drawings. Then, I focused on drawing on the canvas, allowing users to make lines, rectangles, and other shapes.
-
-Next, I made sure users could move elements around. This was important for adjusting drawings. After that, I added the ability to resize elements to give more control over the shapes.
-
-To make sure mistakes could be fixed, I implemented undo and redo features. I also added freehand drawing for a more natural sketching experience and a text tool to label or note on the canvas.
-
-To navigate larger drawings, I put in pan and zoom tools. With everything functioning, I designed the whole UI to make it user-friendly and appealing.
-
-Finally, I added testing with Cypress and Testing Library. I conducted end-to-end tests on drawing and manipulating text, lines, rectangles, and freehand drawings to make sure everything worked smoothly.
-
-Along the way, while building everything, I took notes on what I've learned so I don't miss out on it. I also documented the behind-the-scenes processes every time a feature was added.
-
-This way, I understood what I've built. The funny thing is, as soon as I started to document what happened behind the scenes and the features I've added, it made me realize that we fully understand something once we've actually taken a step back, thought about it, and documented what we've done. I think this is a good practice to follow when learning something new.
