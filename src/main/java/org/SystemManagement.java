@@ -5,15 +5,19 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.Security;
+
 import java.util.Base64;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
@@ -41,10 +45,10 @@ public class SystemManagement {
         //Writing key to file
         File file = new File(filePath);
         try (FileOutputStream fos = new FileOutputStream(file)) {
-            String encodedKey = Base64.getEncoder().encodeToString(key.getEncoded());//Display in a readable form to see if worked
+            String encodedKey = Base64.getEncoder().encodeToString(key.getEncoded());
             fos.write(encodedKey.getBytes());
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Problem while performing Input and Output Operation: " + e.getMessage());
         }
     }
 
@@ -52,10 +56,10 @@ public class SystemManagement {
         //Writing key to file
         File file = new File(filePathHMAC);
         try (FileOutputStream fos = new FileOutputStream(file)) {
-            String encodedKey = Base64.getEncoder().encodeToString(HMACKey.getEncoded());//Display in a readable form to see if worked
+            String encodedKey = Base64.getEncoder().encodeToString(HMACKey.getEncoded());
             fos.write(encodedKey.getBytes());
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Problem while performing Input and Output Operation: " + e.getMessage());
         }
     }
 
@@ -71,9 +75,9 @@ public class SystemManagement {
             // Logs message
             logger.info(logMessage);
         } catch (SecurityException e) {
-            e.printStackTrace();
+            System.err.println("User does not have permissions required to access resource: " + e.getMessage());
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Problem while performing Input and Output Operation: " + e.getMessage());
         }
     }
 

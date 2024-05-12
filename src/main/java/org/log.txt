@@ -24,3 +24,9 @@ May 10, 2024 6:30:03 PM org.MainSystemGUI writeLogsToFile
 INFO: User 'Jonesy' has searched: 'Administration'
 May 10, 2024 7:06:52 PM org.MainSystemGUI writeLogsToFile
 INFO: User 'Jonesy' has logged out!
+May 10, 2024 9:02:37 PM org.MainSystemGUI writeLogsToFile
+INFO: User 'Jonesy' logged in successfully
+May 10, 2024 9:02:44 PM org.MainSystemGUI writeLogsToFile
+INFO: User 'Jonesy' has searched: 'Administration'
+May 10, 2024 9:02:45 PM org.MainSystemGUI writeLogsToFile
+INFO: User 'Jonesy' has logged out!

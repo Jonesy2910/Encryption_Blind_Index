@@ -3,21 +3,21 @@ package org;
 import org.bouncycastle.util.encoders.Hex;
 
 import java.io.IOException;
+
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
 import javax.crypto.Mac;
 import javax.crypto.SecretKey;
 
-
 public class HashAllIndexes {
 
-    public void hashAllIndexes() throws SQLException {
+    public void hashAllIndexes() {
         try (Connection conn = DBConnection.getConnection()) {
 
             // Selecting all rows
@@ -72,13 +72,19 @@ public class HashAllIndexes {
                 stmt.setInt(9, id);
                 stmt.executeUpdate();
             }
-        } catch (IOException | InvalidKeyException | NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
+        } catch (IOException e){
+            System.err.println("Problem while performing Input and Output Operation: "  + e.getMessage());
+        } catch(InvalidKeyException e){
+            System.err.println("Invalid or inappropriate key: " + e.getMessage());
+        } catch(NoSuchAlgorithmException e){
+            System.err.println("Invalid or inappropriate decryption algorithm: " + e.getMessage());
+        } catch(SQLException e) {
+            System.err.println("Problem while interacting with database: " + e.getMessage());
         }
     }
 
     //
-    public String getHmacValue(String input) throws NoSuchAlgorithmException, InvalidKeyException, IOException {
+    public String getHmacValue(String input) throws IOException, NoSuchAlgorithmException, InvalidKeyException {
         SecretKey HMACkey = SystemManagement.readHMACKeyFromFile();
         Mac hmac = Mac.getInstance("HMACSHA256");
         hmac.init(HMACkey);

@@ -14,7 +14,7 @@ public class removeFromDatabase {
             deleteStatement.setInt(1, rowIndex);
             deleteStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.err.println("Problem while interacting with database: " + e.getMessage());
         }
     }
 }

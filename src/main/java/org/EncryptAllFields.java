@@ -101,16 +101,12 @@ public class EncryptAllFields {
             }
         } catch (SQLException e) {
             System.err.println("Problem while interacting with database: " + e.getMessage());
-            throw new RuntimeException(e);
         } catch (NoSuchPaddingException e) {
             System.err.println("Invalid padding for encryption: ");
-            throw new RuntimeException(e);
         } catch (NoSuchAlgorithmException e) {
             System.err.println("Invalid or inappropriate encryption algorithm: " + e.getMessage());
-            throw new RuntimeException(e);
         } catch (NoSuchProviderException e) {
             System.err.println("Invalid padding for decryption: " + e.getMessage());
-            throw new RuntimeException(e);
         }
     }
 
