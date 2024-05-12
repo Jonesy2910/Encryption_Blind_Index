@@ -11,7 +11,7 @@
 
 ## Setup 📚
 
-#### 1. Create a two tables in MySQL and call them users and information
+1. #### Create a two tables in MySQL and call them users and information
 ```
  CREATE TABLE `information` (
    `ID` int NOT NULL AUTO_INCREMENT,
@@ -43,11 +43,11 @@
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
  ```
 
-#### 2. Add a record to the users table that is shorter than 30 characters for username and password
+2. #### Add a record to the users table that is shorter than 30 characters for username and password
 
-#### 3. Use the excel spreadsheet that has the information for the database to be imported directly into the file using table wizard in MySQL.
+3. #### Use the excel spreadsheet that has the information for the database to be imported directly into the file using table wizard in MySQL.
 
-#### 4. Change the key locations and log location with a suitable file locations for the textfile to be saved to your device. Requires values changed in systemSetup and SystemManagement classes
+4. #### Change the key locations and log location with a suitable file locations for the textfile to be saved to your device. Requires values changed in systemSetup and SystemManagement classes
 
 ##### For Example:
 
@@ -56,7 +56,7 @@ Path path = Paths.get("D:\\Desktop\\Key_Location\\AES_key.txt");
 String hmacKeyFilePath = "D:\\Projects\\Blind_Index\\src\\main\\java\\org\\key_location\\HMAC_key.txt";
 ```
 
-#### 5. In the RunSystem class file. 
+5. #### In the RunSystem class file. 
 
 ##### This should full create the system so that the program can be used and launch the LoginGUI.
 
